@@ -1,0 +1,7 @@
+{
+  "name": "TrueVoice: Audio Authenticity & Research Analyzer",
+  "description": "A production-grade AI voice detection system and dashboard, featuring CNN+BiLSTM architectures, log-mel spectrogram analysis, and calibrated confidence scoring.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

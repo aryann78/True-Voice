@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TrueVoice | Calm Inquiry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables preserved */
+        :root {
+            --bg-primary: #f9f7f2;
+            --bg-surface: #efece4;
+            --text-primary: #2d1b10;
+            --text-secondary: #6d5d51;
+            --accent-clay: #b68a73;
+            --accent-sage: #8e9481;
+            --accent-peach: #d5a391;
+            --border: rgba(45, 27, 16, 0.08);
+            --header-font: 'Crimson Pro', serif;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            margin: 0;
+            padding: 0;
+            transition: background-color 1s ease, color 1s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Mobile scrollbar fix */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: #dcd7ce; border-radius: 10px; }
+        
+        #global-error {
+            display: none;
+            padding: 20px;
+            color: #7f1d1d;
+            background: #fef2f2;
+            font-family: monospace;
+            margin: 20px;
+            border: 1px solid #fca5a5;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        /* NEW 3D & Animation Utilities */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-12 {
+            transform: rotateY(12deg);
+        }
+        
+        /* Grid Background Animation */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+    
+    <!-- Emergency Error Trap: Catch syntax errors or bundle failures -->
+    <script>
+        window.onerror = function(msg, url, line, col, error) {
+            var el = document.getElementById('global-error');
+            if (el) {
+                el.style.display = 'block';
+                el.innerHTML = "<strong>CRITICAL LOAD ERROR:</strong><br>" + msg + "<br><br>Device: " + navigator.userAgent;
+                // Log to backend if possible, or just show user
+            }
+            return false;
+        };
+        
+        // Catch unhandled promise rejections (async/await failures)
+        window.onunhandledrejection = function(event) {
+            var el = document.getElementById('global-error');
+            if (el) {
+                el.style.display = 'block';
+                el.innerHTML = "<strong>ASYNC ERROR:</strong><br>" + event.reason;
+            }
+        };
+    </script>
+
+    <script type="importmap">
+{
+  "imports": {
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.4/client",
+    "react-dom": "https://esm.sh/react-dom@^19.2.4",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="theme-warm">
+    <div id="global-error"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
